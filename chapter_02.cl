@@ -37,8 +37,10 @@
 
 (defun generate (phrase)
     "Generate a random sentence or phrase"
-    (cond ((listp phrase)
-            (mappend #'generate phrase))
-          ((rewrites phrase)
-            (generate (random-elt (rewrites phrase))))
-          (t (list phrase))))
+    (let ((choices nil))
+        (cond ((listp phrase)
+               (mappend #'generate phrase))
+              ((setf choices (rewrites phrase))
+               (generate (random-elt choices)))
+              (t (list phrase)))))
+
