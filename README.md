@@ -1,1 +1,1 @@
-# paradigms-of-ai-programming
+# Paradigms of AI Programming
